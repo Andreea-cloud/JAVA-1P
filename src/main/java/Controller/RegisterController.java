@@ -26,10 +26,6 @@ public class RegisterController {
         viewRegisterPage = view;
     }
 
-//    public void initController() {
-////        viewRegisterPage.getRegisterButton().addActionListener(e -> validateAndRegisterUser());
-////    }
-
     public boolean validateAndRegisterUser() {
         String username      = viewRegisterPage.getUsernameField().getText();
         char[] input         = viewRegisterPage.getPasswordField().getPassword();

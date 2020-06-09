@@ -13,10 +13,10 @@ public class MyAccountPage extends MenuBarBase {
 
     private JPanel buttonPanel, textPanel, changePanel;
     private JButton changeEmailButton, changeUsernameButton, changePasswordButton, historyButton;
-    private JLabel new_emailLabel, usernameLabel, confirmuserLabel, new_usernameLabel, textLabel;
+    private JLabel newEmailLabel, usernameLabel, confirmuserLabel, newUsernameLabel, textLabel;
 
 //    FIXME change naming to camelCase format
-    private JTextField new_emailField, usernameField, new_usernameField;
+    private JTextField newEmailField, usernameField, newUsernameField;
 
     MyAccountPage(){
         super();
@@ -39,18 +39,18 @@ public class MyAccountPage extends MenuBarBase {
         buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.gray);
 
-        new_emailLabel = new JLabel("new_email: ");
-        new_emailLabel.setBorder(border);
+        newEmailLabel = new JLabel("new_email: ");
+        newEmailLabel.setBorder(border);
         usernameLabel = new JLabel("Current user!");
         usernameLabel.setBorder(border);
         confirmuserLabel = new JLabel("");
         confirmuserLabel.setBorder(border);
-        new_usernameLabel = new JLabel("new_username: ");
-        new_usernameLabel.setBorder(border);
+        newUsernameLabel = new JLabel("new_username: ");
+        newUsernameLabel.setBorder(border);
 
-        new_emailField = new JTextField();
+        newEmailField = new JTextField();
         usernameField = new JTextField();
-        new_usernameField = new JTextField();
+        newUsernameField = new JTextField();
 
         changeEmailButton = new JButton("Change Email: ");
         changeEmailButton.setBorder(border);
@@ -68,11 +68,11 @@ public class MyAccountPage extends MenuBarBase {
         changePanel.add(usernameLabel);
         changePanel.add(usernameField);
         changePanel.add(confirmuserLabel);
-        changePanel.add(new_emailLabel);
-        changePanel.add(new_emailField);
+        changePanel.add(newEmailLabel);
+        changePanel.add(newEmailField);
         changePanel.add(changeEmailButton);
-        changePanel.add(new_usernameLabel);
-        changePanel.add(new_usernameField);
+        changePanel.add(newUsernameLabel);
+        changePanel.add(newUsernameField);
         changePanel.add(changeUsernameButton);
 
         add(changePanel);
@@ -120,6 +120,10 @@ public class MyAccountPage extends MenuBarBase {
     }
     public static void showMessage(String msg) {
         JOptionPane.showMessageDialog(null, msg, "ERROR", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public static void showMessage2(String msg) {
+        JOptionPane.showMessageDialog(null, msg, "SUCCES", JOptionPane.INFORMATION_MESSAGE);
     }
 }
 

@@ -17,6 +17,7 @@ public class UsersDao {
     PreparedStatement selectUserQuery;
     PreparedStatement updateUsernameQuery;
     PreparedStatement updateEmailQuery;
+    PreparedStatement updatePasswordQuery;
 
     public UsersDao(Connection connection) {
         this.connection = connection;
@@ -26,6 +27,7 @@ public class UsersDao {
             selectUserQuery = connection.prepareStatement("SELECT * FROM utilizatori WHERE username = ?");
             updateUsernameQuery = connection.prepareStatement("UPDATE utilizatori SET username = ? WHERE username = ?");
             updateEmailQuery = connection.prepareStatement("UPDATE utilizatori SET email = ? WHERE username = ?");
+            updatePasswordQuery = connection.prepareStatement("UPDATE utilizatori SET password = ? WHERE username = ?");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -67,6 +69,19 @@ public class UsersDao {
         }
         return false;
     }
+
+    public boolean updatePassword(String newPassword, String currentUsername ){
+        try{
+            updatePasswordQuery.setString(1, newPassword);
+            updatePasswordQuery.setString(2, currentUsername);
+            int nameOfLinesUpdatePassword = updatePasswordQuery.executeUpdate();
+            return nameOfLinesUpdatePassword != 0;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public List<Users> findAll() {
         try {
             ResultSet result = selectAllQuery.executeQuery();

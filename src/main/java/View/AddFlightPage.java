@@ -122,6 +122,7 @@ public class AddFlightPage extends JFrame {
         });
         cancelButton.addActionListener(e -> {
             MainPage mainPage = new MainPage();
+            dispose();
         });
     }
     public static void showMessage(String msg) {

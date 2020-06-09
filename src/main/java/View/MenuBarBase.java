@@ -63,8 +63,8 @@ public class MenuBarBase extends JFrame {
 
             menuBar.add(homeItem);
             menuBar.add(myAccountItem);
-            menuBar.add(logoutItem);
             menuBar.add(historyItem);
+            menuBar.add(logoutItem);
             menuBar.add(backItem);
 
             setJMenuBar(menuBar);
