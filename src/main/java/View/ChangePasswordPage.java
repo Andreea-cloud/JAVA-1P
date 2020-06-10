@@ -88,5 +88,9 @@ public class ChangePasswordPage extends JFrame{
     public static void showMessage(String msg) {
         JOptionPane.showMessageDialog(null, msg, "ERROR", JOptionPane.ERROR_MESSAGE);
     }
+
+    public static void showMessageSuccess(String msg) {
+        JOptionPane.showMessageDialog(null, msg, "SUCCES", JOptionPane.INFORMATION_MESSAGE);
+    }
 }
 

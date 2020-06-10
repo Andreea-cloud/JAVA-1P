@@ -1,6 +1,9 @@
 package Dao;
 
 import Model.Flights;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -23,14 +26,14 @@ public class FlightsDao {
         }
     }
 
-    public boolean insert(String sursa, String destinatie, LocalTime oraPlecare, LocalTime oraSosire, String zile, int pret ) {
+    public boolean insert(String departure, String destination, LocalTime departureTime, LocalTime arrivalTime, String days, int price ) {
         try {
-            insertQuery.setString(1, sursa);
-            insertQuery.setString(2, destinatie);
-            insertQuery.setTime(3, Time.valueOf(oraPlecare));
-            insertQuery.setTime(4, Time.valueOf(oraSosire));
-            insertQuery.setString(5, zile);
-            insertQuery.setInt(6, pret);
+            insertQuery.setString(1, departure);
+            insertQuery.setString(2, destination);
+            insertQuery.setTime(3, Time.valueOf(departureTime));
+            insertQuery.setTime(4, Time.valueOf(arrivalTime));
+            insertQuery.setString(5, days);
+            insertQuery.setInt(6, price);
             int nameOfLinesModified = insertQuery.executeUpdate();
             return nameOfLinesModified != 0;
         } catch (SQLException e) {
@@ -46,14 +49,14 @@ public class FlightsDao {
 
             while(result.next()) {
                 int id = result.getInt("ID");
-                String sursa = result.getString("Sursa");
-                String destinatie = result.getString("Destinatie");
-                LocalTime oraPlecare = result.getTime("Ora Plecare").toLocalTime();
-                LocalTime oraSosire = result.getTime("Ora Sosire").toLocalTime();
-                String zile = result.getString("Zile");
-                int pret = result.getInt("Pret");
+                String departure = result.getString("Sursa");
+                String destination = result.getString("Destinatie");
+                LocalTime departureTime = result.getTime("Ora Plecare").toLocalTime();
+                LocalTime arrivalTime = result.getTime("Ora Sosire").toLocalTime();
+                String days = result.getString("Zile");
+                int price = result.getInt("Pret");
 
-                Flights Flight = new Flights(id, sursa, destinatie, oraPlecare, oraSosire, zile, pret);
+                Flights Flight = new Flights(id, departure, destination, departureTime, arrivalTime, days, price);
                 flights.add(Flight);
             }
 
@@ -63,4 +66,5 @@ public class FlightsDao {
         }
         return Collections.emptyList();
     }
+
 }

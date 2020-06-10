@@ -19,15 +19,16 @@ public class FlightController {
 
     public FlightController( AddFlightPage view){
         Connection connection = DatabaseConnection.getConnection();
-        flightsDao = new FlightsDao(connection);
-        viewAddFlightPage = view;
+        flightsDao            = new FlightsDao(connection);
+        viewAddFlightPage     = view;
     }
 
     public boolean validateFlight(){
 
         String departure = viewAddFlightPage.getDepartureField().getText();
         String arrive    = viewAddFlightPage.getArriveField().getText();
-        int price = 0;
+        int price        = 0;
+
        try {
            price = Integer.parseInt(viewAddFlightPage.getPriceField().getText());
        }catch(Exception e) {
@@ -66,10 +67,10 @@ public class FlightController {
         LocalTime departureTime = LocalTime.parse(viewAddFlightPage.getDepartureTimePicker().toString());
         LocalTime flightTime    = LocalTime.parse(viewAddFlightPage.getTimeBox().toString());
         LocalTime arrivalTime   = departureTime.plusHours(flightTime.getHour())
-                                             .plusMinutes(flightTime.getMinute());
+                                               .plusMinutes(flightTime.getMinute());
 
         List<String> flightDaysCheckedList  = new ArrayList<String>();
-        Component[] daysPanelComponents = viewAddFlightPage.getDaysPanel().getComponents();
+        Component[] daysPanelComponents     = viewAddFlightPage.getDaysPanel().getComponents();
 
         for (Component comp : daysPanelComponents) {
             if (comp instanceof JCheckBox) {

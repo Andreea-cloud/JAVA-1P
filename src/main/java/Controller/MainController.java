@@ -5,6 +5,7 @@ import Dao.UsersDao;
 import Database.DatabaseConnection;
 import Model.Flights;
 import Model.Users;
+import View.MainPage;
 
 import java.sql.Connection;
 import java.util.List;
@@ -27,10 +28,6 @@ public class MainController {
     public List<Users> getUsers() {return usersDao.findAll();
 
     }
-
-//    public boolean adaugaZbor(String sursa, String destinatie, Time oraPlecare, Time oraSosire, String zile, int pret) {
-//        return flightsDao.insert(sursa, destinatie, oraPlecare, oraSosire, zile, pret);
-//    }
 
     public List<Flights> getFlights() {
         return flightsDao.findAll();

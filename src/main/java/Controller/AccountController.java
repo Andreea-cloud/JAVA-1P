@@ -34,7 +34,6 @@ public class AccountController {
     public boolean validateChangeUser() {
         String currentUsername = viewMyAccountPage.getUsernameField().getText();
         String newUsername = viewMyAccountPage.getNewUsernameField().getText();
-
         List<Users> users = usersDao.findAll();
 
         if (!currentUsername.isEmpty()) {
@@ -46,7 +45,7 @@ public class AccountController {
                     return false;
                 }else{
     // de uitat cu Andrei
-                    viewMyAccountPage.showMessage2("Username changed successfully");
+
                 }
             }
         } else {
@@ -55,6 +54,7 @@ public class AccountController {
             return false;
         }
         usersDao.updateUsername(newUsername, currentUsername );
+        viewMyAccountPage.showMessageSuccess("Username changed successfully");
         // TODO check the result of update query
         return true;
     }
@@ -84,6 +84,7 @@ public class AccountController {
             return false;
         }
         usersDao.updateEmail(newEmail, currentUsername);
+        viewMyAccountPage.showMessageSuccess("Email changed successfully");
         // TODO check the result of update query
         return true;
     }
@@ -109,10 +110,19 @@ public class AccountController {
                 viewChangePasswordPage.getNewPasswordField().requestFocus();
                 return false;
             }
+            if(!newPasswordConfirm.equals(newPassword)) {
+                viewChangePasswordPage.showMessage("Password confirmation must be identical to the password!");
+                viewChangePasswordPage.getNewPasswordField().setText("");
+                viewChangePasswordPage.getConfirmNewPasswordField().setText("");
+                viewChangePasswordPage.getNewPasswordField().requestFocus();
+                return false;
+            }
         }else {
             viewChangePasswordPage.showMessage("Current username cannot be empty!");
+            return false;
         }
         usersDao.updatePassword(newPassword, currentUser);
+        viewChangePasswordPage.showMessageSuccess("Password changed successfully");
         return true;
     }
 }

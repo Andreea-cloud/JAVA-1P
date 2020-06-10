@@ -60,7 +60,8 @@ public class LoginPage extends JFrame {
         loginButton.addActionListener(e -> {
             LoginController loginController = new LoginController(this);
             if(true == loginController.validateLoginUser()) {
-                MainPage main = new MainPage(getUsernameField().toString(), getUsernameField().toString());
+//              MainPage main = new MainPage(getUsernameField().toString(), getUsernameField().toString());
+                MainPage main = new MainPage();
                 main.setVisible(true);
                 dispose();
             }
@@ -71,6 +72,7 @@ public class LoginPage extends JFrame {
             dispose();
         });
     }
+
     public static void showMessage(String msg) {
         JOptionPane.showMessageDialog(null, msg, "ERROR", JOptionPane.ERROR_MESSAGE);
     }

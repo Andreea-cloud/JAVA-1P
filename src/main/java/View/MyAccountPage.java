@@ -122,7 +122,7 @@ public class MyAccountPage extends MenuBarBase {
         JOptionPane.showMessageDialog(null, msg, "ERROR", JOptionPane.ERROR_MESSAGE);
     }
 
-    public static void showMessage2(String msg) {
+    public static void showMessageSuccess(String msg) {
         JOptionPane.showMessageDialog(null, msg, "SUCCES", JOptionPane.INFORMATION_MESSAGE);
     }
 }

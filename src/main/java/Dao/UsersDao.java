@@ -103,27 +103,6 @@ public class UsersDao {
         }
         return Collections.emptyList();
     }
-
-//    public List<Users> findOnly(){
-//        try{
-//            ResultSet result2 = selectUserQuery.executeQuery();
-//            List<Users> users = new ArrayList<>();
-//
-//            while(result2.next()) {
-//                int id = result2.getInt("id");
-//                String username = result2.getString("username");
-//                String password = result2.getString("password");
-//                String email = result2.getString("email");
-//
-//                Users user = new Users(id, username, password, email);
-//                users.add(user);
-//            }
-//            return users;
-//        }catch(SQLException e){
-//            e.printStackTrace();
-//        }
-//        return Collections.emptyList();
-//    }
 }
 
 

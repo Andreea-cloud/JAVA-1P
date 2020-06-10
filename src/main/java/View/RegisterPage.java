@@ -65,6 +65,7 @@ public class RegisterPage extends JFrame {
                 LoginPage login = new LoginPage();
                 login.setVisible(true);
                 dispose();
+
             }
             else {
             }
