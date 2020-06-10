@@ -1,6 +1,8 @@
 package View;
 
 import Controller.RegisterController;
+import Controller.UserController;
+import Model.Audit;
 import lombok.Getter;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
