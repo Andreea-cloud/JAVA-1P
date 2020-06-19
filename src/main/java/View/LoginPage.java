@@ -1,6 +1,7 @@
 package View;
 
 import Controller.LoginController;
+import Controller.Session;
 import lombok.Getter;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -60,7 +61,9 @@ public class LoginPage extends JFrame {
         loginButton.addActionListener(e -> {
             LoginController loginController = new LoginController(this);
             if(true == loginController.validateLoginUser()) {
-//              MainPage main = new MainPage(getUsernameField().toString(), getUsernameField().toString());
+//                Session loginSession =
+//                loginSession.setUserName(getUsernameField().getText());
+
                 MainPage main = new MainPage();
                 main.setVisible(true);
                 dispose();

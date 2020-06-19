@@ -5,7 +5,7 @@ import Database.DatabaseConnection;
 import Model.Users;
 import View.ChangePasswordPage;
 import View.MyAccountPage;
-import javax.swing.*;
+
 import java.sql.Connection;
 import java.util.List;
 
@@ -45,7 +45,6 @@ public class AccountController {
                     return false;
                 }else{
     // de uitat cu Andrei
-
                 }
             }
         } else {
@@ -55,6 +54,7 @@ public class AccountController {
         }
         usersDao.updateUsername(newUsername, currentUsername );
         viewMyAccountPage.showMessageSuccess("Username changed successfully");
+        Session.getInstance().setAuthUserName(newUsername);
         // TODO check the result of update query
         return true;
     }
@@ -66,7 +66,6 @@ public class AccountController {
         List<Users> users = usersDao.findAll();
 
         if (!currentUsername.isEmpty()) {
-            for (Users temp : users) {
                 if (!newEmail.isEmpty()) {
                     if (!newEmail.matches(EMAIL_REGEX)) {
                         viewMyAccountPage.showMessage("Email format is not valid!");
@@ -75,9 +74,9 @@ public class AccountController {
                         return false;
                     }
                 }else{
-                    viewMyAccountPage.showMessage("Email connot be empty!");
+                    viewMyAccountPage.showMessage("Email cannot be empty!");
                 }
-            }
+
         } else {
             viewMyAccountPage.showMessage("Current username cannot be empty!");
             viewMyAccountPage.getUsernameField().requestFocus();
@@ -85,6 +84,7 @@ public class AccountController {
         }
         usersDao.updateEmail(newEmail, currentUsername);
         viewMyAccountPage.showMessageSuccess("Email changed successfully");
+        Session.getInstance().setAuthEmail(newEmail);
         // TODO check the result of update query
         return true;
     }

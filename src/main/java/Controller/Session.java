@@ -1,22 +1,23 @@
 package Controller;
 
 import Model.Users;
-
+import lombok.Getter;
+import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
+@Setter
+@Getter
 public class Session {
-    private List<Users>  users = new ArrayList();
-    private static Session SINGELTONE;
-
-    private Session(){
-
-    }
+    private static Session SINGLETON;
+    //info about authenticated user
+    private String authUserName;
+    private String authEmail;
 
     public static final Session getInstance(){
-        if(SINGELTONE == null){
-            SINGELTONE = new Session();
+        if(SINGLETON == null){
+            SINGLETON = new Session();
         }
-        return SINGELTONE;
+        return SINGLETON;
     }
 }

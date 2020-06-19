@@ -1,6 +1,7 @@
 package View;
 
 import Controller.AccountController;
+import Controller.Session;
 import lombok.Getter;
 
 import javax.swing.*;
@@ -13,10 +14,10 @@ public class MyAccountPage extends MenuBarBase {
 
     private JPanel buttonPanel, textPanel, changePanel;
     private JButton changeEmailButton, changeUsernameButton, changePasswordButton, historyButton;
-    private JLabel newEmailLabel, usernameLabel, confirmuserLabel, newUsernameLabel, textLabel;
+    private JLabel newEmailLabel, usernameLabel, newUsernameLabel, textLabel;
 
 //    FIXME change naming to camelCase format
-    private JTextField newEmailField, usernameField, newUsernameField;
+    private JTextField newEmailField, usernameField, newUsernameField,  emailField;
 
     MyAccountPage(){
         super();
@@ -43,13 +44,16 @@ public class MyAccountPage extends MenuBarBase {
         newEmailLabel.setBorder(border);
         usernameLabel = new JLabel("Current user!");
         usernameLabel.setBorder(border);
-        confirmuserLabel = new JLabel("");
-        confirmuserLabel.setBorder(border);
         newUsernameLabel = new JLabel("new_username: ");
         newUsernameLabel.setBorder(border);
 
+        emailField = new JTextField();
+        emailField.setText(Session.getInstance().getAuthEmail());
+        emailField.setEditable(false);
         newEmailField = new JTextField();
         usernameField = new JTextField();
+        usernameField.setText(Session.getInstance().getAuthUserName());
+        usernameField.setEditable(false);
         newUsernameField = new JTextField();
 
         changeEmailButton = new JButton("Change Email: ");
@@ -67,7 +71,7 @@ public class MyAccountPage extends MenuBarBase {
 
         changePanel.add(usernameLabel);
         changePanel.add(usernameField);
-        changePanel.add(confirmuserLabel);
+        changePanel.add(emailField);
         changePanel.add(newEmailLabel);
         changePanel.add(newEmailField);
         changePanel.add(changeEmailButton);

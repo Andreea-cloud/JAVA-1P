@@ -20,16 +20,27 @@ public class LoginController {
 
     public boolean validateLoginUser(){
 
-        String username      = viewLoginPage.getUsernameField().getText();
-        char[] input         = viewLoginPage.getPasswordField().getPassword();
-        String passwd        = new String(input);
+        String usernameOrEmail      = viewLoginPage.getUsernameField().getText();
+        char[] input                = viewLoginPage.getPasswordField().getPassword();
+        String passwd               = new String(input);
 
         List<Users> users = usersDao.findAll();
 
         for (Users temp : users) {
-            if(temp.getUsername().equals(username) || temp.getEmail().equals(username)){
-               if(temp.getPassword().equals(passwd))
-                   return true;
+            // matches username
+            if (temp.getUsername().equals(usernameOrEmail)) {
+                if (temp.getPassword().equals(passwd)) {
+                    Session.getInstance().setAuthUserName(usernameOrEmail);
+                    Session.getInstance().setAuthEmail(temp.getEmail());
+                    return true;
+                }
+            // matches email
+            } else if (temp.getEmail().equals(usernameOrEmail)) {
+                if (temp.getPassword().equals(passwd)) {
+                    Session.getInstance().setAuthEmail(usernameOrEmail);
+                    Session.getInstance().setAuthUserName(temp.getUsername());
+                    return true;
+                }
             }
         }
 
