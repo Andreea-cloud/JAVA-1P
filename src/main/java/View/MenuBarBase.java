@@ -1,5 +1,7 @@
 package View;
 
+import Controller.HistoryController;
+
 import javax.swing.*;
 
 public class MenuBarBase extends JFrame {
@@ -38,22 +40,26 @@ public class MenuBarBase extends JFrame {
 
             homeItem.addActionListener(event ->{
                 MainPage mainPage = new MainPage();
+                HistoryController.logAction("Navigate to main page!");
                 mainPage.setVisible(true);
                 dispose();
             });
             myAccountItem.addActionListener(event ->{
                 MyAccountPage myAccountPage = new MyAccountPage();
+                HistoryController.logAction("Navigate to my account page!");
                 myAccountPage.setVisible(true);
                 dispose();
             });
             logoutItem.addActionListener(event -> {
                 LoginPage loginPage = new LoginPage();
+                HistoryController.logAction("Logout!");
                 loginPage.setVisible(true);
                 dispose();
             });
 
             historyItem.addActionListener(event -> {
                 HistoryPage historyPage = new HistoryPage();
+                HistoryController.logAction("Navigate to history page!");
                 historyPage.setVisible(true);
                 dispose();
             });

@@ -1,6 +1,7 @@
 package View;
 
 import Controller.FlightController;
+import Controller.HistoryController;
 import com.github.lgooddatepicker.components.TimePicker;
 import com.github.lgooddatepicker.components.TimePickerSettings;
 import lombok.Getter;
@@ -125,6 +126,7 @@ public class AddFlightPage extends JFrame {
         addButton.addActionListener(e -> {
             FlightController flightController = new FlightController(this);
             if (true == flightController.validateFlight()) {
+                HistoryController.logAction("Add new flight!");
                 MainPage mainPage = new MainPage();
                 mainPage.setVisible(true);
                 dispose();
@@ -132,6 +134,7 @@ public class AddFlightPage extends JFrame {
         });
         cancelButton.addActionListener(e -> {
             MainPage mainPage = new MainPage();
+            HistoryController.logAction("Cancel new flight!");
             dispose();
         });
     }

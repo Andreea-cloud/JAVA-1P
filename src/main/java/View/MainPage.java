@@ -1,5 +1,6 @@
 package View;
 
+import Controller.HistoryController;
 import Dao.FlightsDao;
 import Database.DatabaseConnection;
 import Model.Flights;
@@ -99,6 +100,7 @@ public class MainPage extends MenuBarBase {
 
         addButton.addActionListener(e -> {
             AddFlightPage addFlight = new AddFlightPage();
+            HistoryController.logAction("Navigate to add new flight page!");
             addFlight.setVisible(true);
             dispose();
         });

@@ -1,6 +1,7 @@
 package View;
 
 import Controller.AccountController;
+import Controller.HistoryController;
 import Controller.Session;
 import lombok.Getter;
 import javax.swing.*;
@@ -89,6 +90,7 @@ public class ChangePasswordPage extends MenuBarBase{
         changeButton.addActionListener(e -> {
             AccountController accountController = new AccountController(this);
             if (true == accountController.validateChangePassword()) {
+                HistoryController.logAction("Change password!");
                 LoginPage loginPage = new LoginPage();
                 loginPage.setVisible(true);
                 dispose();

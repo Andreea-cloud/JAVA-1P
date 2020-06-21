@@ -11,7 +11,6 @@ import java.util.List;
 
 public class LoginController {
     private UsersDao usersDao;
-    private HistoryDao historyDao = HistoryDao.getInstance();
     private LoginPage viewLoginPage;
 
     public LoginController (LoginPage view){
@@ -51,11 +50,5 @@ public class LoginController {
         viewLoginPage.getPasswordField().setText("");
         viewLoginPage.getUsernameField().requestFocus();
         return false;
-    }
-
-    public void logAction() {
-        String usernameOrEmail      = viewLoginPage.getUsernameField().getText();
-        java.util.Date currentTime  = Calendar.getInstance().getTime();
-        historyDao.insert(usernameOrEmail, "login",  new java.sql.Time(currentTime.getTime()));
     }
 }

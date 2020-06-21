@@ -1,6 +1,7 @@
 package View;
 
 import Controller.AccountController;
+import Controller.HistoryController;
 import Controller.Session;
 import lombok.Getter;
 
@@ -103,6 +104,7 @@ public class MyAccountPage extends MenuBarBase {
         changeUsernameButton.addActionListener( e -> {
             AccountController accountController = new AccountController(this);
             if(true == accountController.validateChangeUser()){
+                HistoryController.logAction("Change username!");
                 MyAccountPage myAccountPage = new MyAccountPage();
                 myAccountPage.setVisible(true);
                 dispose();
@@ -113,6 +115,7 @@ public class MyAccountPage extends MenuBarBase {
         changeEmailButton.addActionListener(e -> {
             AccountController accountController = new AccountController(this);
             if(true == accountController.validateChangeEmail()){
+                HistoryController.logAction("Change email!");
                 MyAccountPage myAccountPage = new MyAccountPage();
                 myAccountPage.setVisible(true);
                 dispose();
@@ -122,12 +125,14 @@ public class MyAccountPage extends MenuBarBase {
 
         changePasswordButton.addActionListener(e -> {
             ChangePasswordPage changePassword = new ChangePasswordPage();
+            HistoryController.logAction("Navigate to password Page!");
             changePassword.setVisible(true);
             dispose();
         });
 
         historyButton.addActionListener(e -> {
             HistoryPage history = new HistoryPage();
+            HistoryController.logAction("Navigate to history Page!");
             history.setVisible(true);
             dispose();
         });

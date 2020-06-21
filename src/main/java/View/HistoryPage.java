@@ -20,7 +20,7 @@ public class HistoryPage extends MenuBarBase {
     HistoryPage() {
         super("", "");
         setTitle("History!");
-        setSize(500, 300);
+        setSize(700, 500);
         setLocationRelativeTo(null);
         setVisible(true);
         showHistory();

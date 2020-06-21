@@ -1,6 +1,9 @@
 package Model;
 
 import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.Date;
+
 import lombok.*;
 
 @Getter
@@ -13,5 +16,5 @@ public class Audit {
 
     String username;
     String action;
-    Time timestamp;
+    Timestamp timestamp;
 }

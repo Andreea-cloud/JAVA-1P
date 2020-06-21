@@ -1,5 +1,6 @@
 package View;
 
+import Controller.HistoryController;
 import Controller.LoginController;
 import Controller.Session;
 import lombok.Getter;
@@ -65,7 +66,7 @@ public class LoginPage extends JFrame {
         loginButton.addActionListener(e -> {
             LoginController loginController = new LoginController(this);
             if(true == loginController.validateLoginUser()) {
-                loginController.logAction();
+                HistoryController.logAction("Login");
                 MainPage main = new MainPage();
                 main.setVisible(true);
                 dispose();

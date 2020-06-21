@@ -1,5 +1,6 @@
 package Dao;
 
+import Controller.Session;
 import Database.DatabaseConnection;
 import Model.Audit;
 import Model.Users;
@@ -20,7 +21,7 @@ public class HistoryDao {
         this.connection = DatabaseConnection.getConnection();
         try{
             insertQuery = connection.prepareStatement("INSERT INTO audit VALUES (null, ?,?,?)");
-            selectQuery = connection.prepareStatement("SELECT * FROM audit");
+            selectQuery = connection.prepareStatement("SELECT * FROM audit WHERE username = ?");
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -33,11 +34,11 @@ public class HistoryDao {
         return SINGLETON;
     }
 
-    public boolean insert(String username, String action, Time timestamp){
+    public boolean insert(String username, String action, Timestamp timestamp ){
         try{
             insertQuery.setString(1, username);
             insertQuery.setString(2, action);
-            insertQuery.setTime(3,  timestamp);
+            insertQuery.setTimestamp(3,  timestamp);
             insertQuery.executeUpdate();
 
         }catch (SQLException e) {
@@ -48,13 +49,14 @@ public class HistoryDao {
 
     public List<Audit> findAll(){
         try {
+            selectQuery.setString(1, Session.getInstance().getAuthUserName());
             ResultSet result = selectQuery.executeQuery();
             List<Audit> audit = new ArrayList<>();
 
             while(result.next()) {
                 String username = result.getString("username");
                 String action = result.getString("action");
-                Time timestamp = result.getTime("timestamp");
+                Timestamp timestamp = result.getTimestamp("timestamp");
 
                 Audit history = new Audit(username, action, timestamp);
                 audit.add(history);
@@ -66,5 +68,4 @@ public class HistoryDao {
         }
         return Collections.emptyList();
     }
-
 }
