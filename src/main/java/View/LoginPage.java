@@ -19,14 +19,16 @@ public class LoginPage extends JFrame {
 
     LoginPage(){
         setTitle("Login Page");
-        setSize(400, 150);
+        setSize(450, 180);
         setLocationRelativeTo(null);
 
         EmptyBorder border = new EmptyBorder(50,30, 50, 30);
 
         usernameLabel = new JLabel("UserName / E-mail: ");
+        usernameLabel.setFont(new Font("Time New Roman", Font.BOLD, 15));
         usernameLabel.setBorder(border);
         passwordLabel = new JLabel("Password: ");
+        passwordLabel.setFont(new Font("Time New Roman", Font.BOLD, 15));
         passwordLabel.setBorder(border);
 
         usernameField = new JTextField();
@@ -37,11 +39,13 @@ public class LoginPage extends JFrame {
         usernameField.setBorder(border2);
 
         loginButton = new JButton("Login");
+        loginButton.setFont(new Font("Time New Roman", Font.ITALIC, 20));
         loginButton.setBorder(border);
-        loginButton.setBackground(Color.GREEN);
+        loginButton.setBackground(Color.PINK);
         cancelButton = new JButton("Cancel");
+        cancelButton.setFont(new Font("Time New Roman", Font.ITALIC, 20));
         cancelButton.setBorder(border);
-        cancelButton.setBackground(Color.GREEN);
+        cancelButton.setBackground(Color.PINK);
 
         panel = new JPanel(new GridLayout(3, 2,15, 15));
         panel.add(usernameLabel);
@@ -51,7 +55,7 @@ public class LoginPage extends JFrame {
         panel.add(loginButton);
         panel.add(cancelButton);
 
-        panel.setBackground(Color.GRAY);
+        panel.setBackground(Color.RED);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -61,9 +65,6 @@ public class LoginPage extends JFrame {
         loginButton.addActionListener(e -> {
             LoginController loginController = new LoginController(this);
             if(true == loginController.validateLoginUser()) {
-//                Session loginSession =
-//                loginSession.setUserName(getUsernameField().getText());
-
                 MainPage main = new MainPage();
                 main.setVisible(true);
                 dispose();

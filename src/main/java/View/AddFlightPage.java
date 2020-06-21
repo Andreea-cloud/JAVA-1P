@@ -22,7 +22,8 @@ public class AddFlightPage extends JFrame {
 
     AddFlightPage() {
         setTitle("Add new flight!");
-        setSize(500, 700);
+        setFont(new Font("Time New Roman", Font.BOLD, 20));
+        setSize(650, 550);
         setLocationRelativeTo(null);
 
         EmptyBorder border = new EmptyBorder(20, 10, 20, 5);
@@ -30,6 +31,7 @@ public class AddFlightPage extends JFrame {
         textPanel = new JPanel();
         textPanel.setBackground(Color.orange);
         textLabel = new JLabel("Add new flight: ");
+        textLabel.setFont(new Font("Time New Roman", Font.ITALIC, 25));
         textPanel.add(textLabel, BorderLayout.CENTER);
         add(textPanel, BorderLayout.NORTH);
 
@@ -37,16 +39,19 @@ public class AddFlightPage extends JFrame {
         optionsPanel.setBackground(Color.gray);
 
         departureLabel = new JLabel("Departure flight: ");
+        departureLabel.setFont(new Font("Time New Roman", Font.BOLD, 20));
         departureLabel.setBorder(border);
         departureField = new JTextField();
         departureField.setBorder(border);
 
         arriveLabel = new JLabel("Destination flight");
+        arriveLabel.setFont(new Font("Time New Roman", Font.BOLD, 20));
         arriveLabel.setBorder(border);
         arriveField = new JTextField();
         arriveField.setBorder(border);
 
         departureTimeLabel = new JLabel("Departure time: ");
+        departureTimeLabel.setFont(new Font("Time New Roman", Font.BOLD, 20));
         departureTimeLabel.setBorder(border);
         TimePickerSettings timeSettings = new TimePickerSettings();
         timeSettings.use24HourClockFormat();
@@ -54,15 +59,18 @@ public class AddFlightPage extends JFrame {
         departureTimePicker = new TimePicker(timeSettings);
 
         timeLabel = new JLabel("Flight duration: ");
+        timeLabel.setFont(new Font("Time New Roman", Font.BOLD, 20));
         timeLabel.setBorder(border);
         timeBox = new TimePicker(timeSettings);
 
         priceLabel = new JLabel("Price: ");
+        priceLabel.setFont(new Font("Time New Roman", Font.BOLD, 20));
         priceLabel.setBorder(border);
         priceField = new JTextField();
         priceField.setBorder(border);
 
         daysLabel = new JLabel("Days: ");
+        daysLabel.setFont(new Font("Time New Roman", Font.BOLD, 20));
         daysLabel.setBorder(border);
         mondayBox = new JCheckBox("Monday");
         tuesdayBox = new JCheckBox("Tuesday");
@@ -98,8 +106,10 @@ public class AddFlightPage extends JFrame {
         add(optionsPanel, BorderLayout.CENTER);
 
         addButton = new JButton("Add flight ");
+        addButton.setFont(new Font("Time New Roman", Font.ITALIC, 25));
         addButton.setBackground(Color.orange);
         cancelButton = new JButton("Cancel flight");
+        cancelButton.setFont(new Font("Time New Roman", Font.ITALIC, 25));
         cancelButton.setBackground(Color.gray);
 
         buttonPanel = new JPanel();

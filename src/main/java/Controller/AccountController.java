@@ -44,7 +44,6 @@ public class AccountController {
                     viewMyAccountPage.getNewUsernameField().requestFocus();
                     return false;
                 }else{
-    // de uitat cu Andrei
                 }
             }
         } else {

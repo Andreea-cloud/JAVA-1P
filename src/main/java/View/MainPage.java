@@ -64,7 +64,7 @@ public class MainPage extends MenuBarBase {
 
     private void initMainPage() {
         setTitle("Main Page");
-        setSize(600, 600);
+        setSize(600, 400);
         setLocationRelativeTo(null);
 
         EmptyBorder border = new EmptyBorder(30, 45, 30, 45);
@@ -88,8 +88,9 @@ public class MainPage extends MenuBarBase {
         currentPanel.add(dateLabel, BorderLayout.EAST);
 
         addButton = new JButton("Add new flight:");
+        addButton.setFont(new Font("Time New Roman", Font.ITALIC, 20));
         addButton.setBorder(border);
-        addButton.setBackground(Color.WHITE);
+        addButton.setBackground(Color.lightGray);
         mainPanel.add(addButton, BorderLayout.CENTER);
 
         add(mainPanel, BorderLayout.SOUTH);

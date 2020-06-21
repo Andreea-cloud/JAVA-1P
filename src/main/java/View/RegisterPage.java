@@ -21,19 +21,23 @@ public class RegisterPage extends JFrame {
     RegisterPage(){
 
         setTitle("Register Page");
-        setSize(450, 200);
+        setSize(550, 280);
         setLocationRelativeTo(null);
         setVisible(true);
 
         EmptyBorder border = new EmptyBorder(50,30, 50, 30);
 
         usernameLabel = new JLabel("UserName: ");
+        usernameLabel.setFont(new Font("Time New Roman", Font.BOLD, 15));
         usernameLabel.setBorder(border);
         passwordLabel = new JLabel("Password: ");
+        passwordLabel.setFont(new Font("Time New Roman", Font.BOLD, 15));
         passwordLabel.setBorder(border);
         passwordConfirmationLabel = new JLabel("Password confirmation: ");
+        passwordConfirmationLabel.setFont(new Font("Time New Roman", Font.BOLD, 15));
         passwordConfirmationLabel.setBorder(border);
         emailLabel = new JLabel("E-mail adress: ");
+        emailLabel.setFont(new Font("Time New Roman", Font.BOLD, 15));
         emailLabel.setBorder(border);
 
         usernameField = new JTextField();
@@ -42,7 +46,9 @@ public class RegisterPage extends JFrame {
         emailField = new JTextField();
 
         registerButton = new JButton("Register");
+        registerButton.setFont(new Font("Time New Roman", Font.ITALIC, 20));
         cancelButton = new JButton("Cancel");
+        cancelButton.setFont(new Font("Time New Roman", Font.ITALIC, 20));
 
         panel = new JPanel(new GridLayout(5, 2, 15, 15));
         panel.add(usernameLabel);

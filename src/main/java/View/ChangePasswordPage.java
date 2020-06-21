@@ -1,6 +1,7 @@
 package View;
 
 import Controller.AccountController;
+import Controller.Session;
 import lombok.Getter;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -9,7 +10,7 @@ import java.awt.*;
 
 @Getter
 
-public class ChangePasswordPage extends JFrame{
+public class ChangePasswordPage extends MenuBarBase{
 
     private JPanel changePanel, buttonPanel, textPanel;
     private JButton changeButton;
@@ -19,22 +20,29 @@ public class ChangePasswordPage extends JFrame{
 
     ChangePasswordPage() {
         setTitle("Change Password!");
-        setSize(400, 300);
+        setSize(500, 300);
         setLocationRelativeTo(null);
+        setBackground(Color.yellow);
 
         EmptyBorder border = new EmptyBorder(20, 10, 20, 20);
 
-        currentUserLabel = new JLabel("Currrnt username: ");
+        currentUserLabel = new JLabel("Current username: ");
+        currentUserLabel.setFont(new Font("Time New Roman", Font.BOLD, 15));
         currentUserLabel.setBorder(border);
 
-        newPasswordLabel = new JLabel("new password: ");
+        newPasswordLabel = new JLabel("New password: ");
+        newPasswordLabel.setFont(new Font("Time New Roman", Font.BOLD, 15));
         newPasswordLabel.setBorder(border);
-        confirmNewPasswordLabel = new JLabel("confirm new password: ");
+        confirmNewPasswordLabel = new JLabel("Confirm new password: ");
+        confirmNewPasswordLabel.setFont(new Font("Time New Roman", Font.BOLD, 15));
         confirmNewPasswordLabel.setBorder(border);
 
         Border border2 = BorderFactory.createLineBorder(Color.GRAY, 2);
 
         currentUserField = new JTextField();
+        currentUserField.setFont(new Font("Time New Roman", Font.BOLD, 15));
+        currentUserField.setText(Session.getInstance().getAuthUserName());
+        currentUserField.setEditable(false);
         currentUserField.setBorder(border2);
 
         newPasswordField = new JPasswordField();
@@ -43,6 +51,7 @@ public class ChangePasswordPage extends JFrame{
         confirmNewPasswordField.setBorder(border2);
 
         changeButton = new JButton("Change password!");
+        changeButton.setFont(new Font("Time New Roman", Font.ITALIC, 15));
         changeButton.setBorder(border);
         changeButton.setBackground(Color.GREEN);
 
@@ -67,7 +76,9 @@ public class ChangePasswordPage extends JFrame{
 
         textPanel = new JPanel();
         textLabel = new JLabel("Please, change your password: ");
+        textLabel.setFont(new Font("Time New Roman", Font.BOLD, 20));
         textPanel.add(textLabel);
+        textPanel.setBackground(Color.GREEN);
 
         add(textPanel, BorderLayout.NORTH);
 

@@ -22,52 +22,62 @@ public class MyAccountPage extends MenuBarBase {
     MyAccountPage(){
         super();
         setTitle("My Account!!!");
-        setSize(500, 300);
+        setSize(550, 300);
         setLocationRelativeTo(null);
 
         textPanel = new JPanel();
-        textPanel.setBackground(Color.gray);
+        textPanel.setBackground(Color.RED);
         textLabel = new JLabel("Change Username & Email: ");
+        textLabel.setFont(new Font("Time New Roman", Font.ITALIC, 18));
         textPanel.add(textLabel, BorderLayout.CENTER);
         add(textPanel,BorderLayout.NORTH);
 
         changePanel = new JPanel();
-        changePanel.setBackground(Color.gray);
+        changePanel.setBackground(Color.RED);
         EmptyBorder border = new EmptyBorder(20,10, 20, 10);
         LayoutManager layout = new GridLayout(4, 3, 15, 15);
         changePanel.setLayout(layout);
 
         buttonPanel = new JPanel();
-        buttonPanel.setBackground(Color.gray);
+        buttonPanel.setBackground(Color.RED);
 
-        newEmailLabel = new JLabel("new_email: ");
+        newEmailLabel = new JLabel("New_email: ");
+        newEmailLabel.setFont(new Font("Time New Roman", Font.BOLD, 15));
         newEmailLabel.setBorder(border);
         usernameLabel = new JLabel("Current user!");
+        usernameLabel.setFont(new Font("Time New Roman", Font.BOLD, 15));
         usernameLabel.setBorder(border);
-        newUsernameLabel = new JLabel("new_username: ");
+        newUsernameLabel = new JLabel("New_username: ");
+        newUsernameLabel.setFont(new Font("Time New Roman", Font.BOLD, 15));
         newUsernameLabel.setBorder(border);
 
         emailField = new JTextField();
+        emailField.setFont(new Font("Time New Roman", Font.BOLD, 15));
         emailField.setText(Session.getInstance().getAuthEmail());
         emailField.setEditable(false);
         newEmailField = new JTextField();
         usernameField = new JTextField();
+        usernameField.setFont(new Font("Time New Roman", Font.BOLD, 15));
         usernameField.setText(Session.getInstance().getAuthUserName());
         usernameField.setEditable(false);
         newUsernameField = new JTextField();
 
-        changeEmailButton = new JButton("Change Email: ");
+        changeEmailButton = new JButton("Change Email!!! ");
+        changeEmailButton.setFont(new Font("Time New Roman", Font.ITALIC, 15));
         changeEmailButton.setBorder(border);
-        changeEmailButton.setBackground(Color.yellow);
-        changeUsernameButton = new JButton("Change Username: ");
+        changeEmailButton.setBackground(Color.LIGHT_GRAY);
+        changeUsernameButton = new JButton("Change Username!!! ");
+        changeUsernameButton.setFont(new Font("Time New Roman", Font.ITALIC, 15));
         changeUsernameButton.setBorder(border);
-        changeUsernameButton.setBackground(Color.yellow);
-        historyButton = new JButton("View history - AUDIT - : ");
+        changeUsernameButton.setBackground(Color.LIGHT_GRAY);
+        historyButton = new JButton("View history - AUDIT - ! ");
+        historyButton.setFont(new Font("Time New Roman", Font.ITALIC, 15));
         historyButton.setBorder(border);
-        historyButton.setBackground(Color.CYAN);
-        changePasswordButton = new JButton("Change Password: ");
+        historyButton.setBackground(Color.PINK);
+        changePasswordButton = new JButton("Change Password! ");
+        changePasswordButton.setFont(new Font("Time New Roman", Font.ITALIC, 15));
         changePasswordButton.setBorder(border);
-        changePasswordButton.setBackground(Color.CYAN);
+        changePasswordButton.setBackground(Color.PINK);
 
         changePanel.add(usernameLabel);
         changePanel.add(usernameField);
