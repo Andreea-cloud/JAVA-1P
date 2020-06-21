@@ -1,5 +1,6 @@
 package Dao;
 
+import Database.DatabaseConnection;
 import Model.Flights;
 
 import javax.swing.*;
@@ -15,15 +16,23 @@ public class FlightsDao {
     Connection connection;
     PreparedStatement insertQuery;
     PreparedStatement selectQuery;
+    private static FlightsDao SINGLETON;
 
-    public FlightsDao(Connection connection) {
-        this.connection = connection;
+    private FlightsDao() {
+        this.connection = DatabaseConnection.getConnection();
         try {
             insertQuery = connection.prepareStatement("INSERT INTO zboruri VALUES (null, ?,?,?,?,?,?)");
             selectQuery = connection.prepareStatement("SELECT * FROM zboruri");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static final FlightsDao getInstance(){
+        if(SINGLETON == null){
+            SINGLETON = new FlightsDao();
+        }
+        return SINGLETON;
     }
 
     public boolean insert(String departure, String destination, LocalTime departureTime, LocalTime arrivalTime, String days, int price ) {

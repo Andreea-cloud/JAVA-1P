@@ -1,7 +1,11 @@
 package Dao;
 
+import Database.DatabaseConnection;
 import Model.Audit;
 import Model.Users;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,6 +13,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+@Getter
+@Setter
 
 public class UsersDao {
 
@@ -19,9 +25,10 @@ public class UsersDao {
     PreparedStatement updateUsernameQuery;
     PreparedStatement updateEmailQuery;
     PreparedStatement updatePasswordQuery;
+    private static UsersDao SINGLETON;
 
-    public UsersDao(Connection connection) {
-        this.connection = connection;
+    private UsersDao() {
+        this.connection = DatabaseConnection.getConnection();
         try {
             insertQuery = connection.prepareStatement("INSERT INTO utilizatori VALUES (null, ?,?,?)");
             selectAllQuery = connection.prepareStatement("SELECT * FROM utilizatori");
@@ -32,6 +39,13 @@ public class UsersDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static final UsersDao getInstance(){
+        if(SINGLETON == null){
+            SINGLETON = new UsersDao();
+        }
+        return SINGLETON;
     }
 
     public boolean insert(String nameUser, String passwdUser, String emailUser ) {

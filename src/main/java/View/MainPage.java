@@ -109,8 +109,7 @@ public class MainPage extends MenuBarBase {
 
     public void showFlights(){
 
-        Connection connection = DatabaseConnection.getConnection();
-        flightsDao = new FlightsDao(connection);
+        flightsDao = FlightsDao.getInstance();
         DefaultTableModel model  = new DefaultTableModel();
         model.addColumn("ID");
         model.addColumn("Sursa");

@@ -20,14 +20,12 @@ public class AccountController {
     private static final String NUMBERS_REGEX    = "(.*[0-9].*)";
 
     public AccountController(MyAccountPage view) {
-        Connection connection = DatabaseConnection.getConnection();
-        usersDao = new UsersDao(connection);
+        usersDao = UsersDao.getInstance();
         viewMyAccountPage = view;
     }
 
     public AccountController(ChangePasswordPage view){
-        Connection connection = DatabaseConnection.getConnection();
-        usersDao = new UsersDao(connection);
+        usersDao = UsersDao.getInstance();
         viewChangePasswordPage = view;
     }
 

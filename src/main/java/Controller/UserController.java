@@ -15,9 +15,8 @@ public class UserController {
     private HistoryPage viewHistoryPage;
 
     public UserController(HistoryPage view){
-        Connection connection = DatabaseConnection.getConnection();
-        usersDao = new UsersDao(connection);
-        historyDao = new HistoryDao(connection);
+        usersDao = UsersDao.getInstance();
+        historyDao = HistoryDao.getInstance();
         viewHistoryPage = view;
     }
 

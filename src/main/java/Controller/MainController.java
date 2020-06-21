@@ -16,9 +16,8 @@ public class MainController {
     private FlightsDao flightsDao;
 
     public MainController() {
-        Connection connection = DatabaseConnection.getConnection();
-        usersDao = new UsersDao(connection);
-        flightsDao = new FlightsDao(connection);
+        usersDao = UsersDao.getInstance();
+        flightsDao = FlightsDao.getInstance();
     }
 
     public boolean adaugaUser(String username, String password, String email) {

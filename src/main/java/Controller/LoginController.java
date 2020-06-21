@@ -12,9 +12,8 @@ public class LoginController {
     private LoginPage viewLoginPage;
 
     public LoginController (LoginPage view){
-        Connection connection = DatabaseConnection.getConnection();
 //        FIXME send usersDao as parameter
-        usersDao = new UsersDao(connection);
+        usersDao = UsersDao.getInstance();
         viewLoginPage = view;
     }
 

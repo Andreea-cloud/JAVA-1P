@@ -18,8 +18,7 @@ public class FlightController {
     private AddFlightPage viewAddFlightPage;
 
     public FlightController( AddFlightPage view){
-        Connection connection = DatabaseConnection.getConnection();
-        flightsDao            = new FlightsDao(connection);
+        flightsDao            = FlightsDao.getInstance();
         viewAddFlightPage     = view;
     }
 

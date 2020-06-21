@@ -1,5 +1,6 @@
 package Dao;
 
+import Database.DatabaseConnection;
 import Model.Audit;
 import Model.Users;
 import lombok.Getter;
@@ -13,15 +14,23 @@ public class HistoryDao {
     Connection connection;
     PreparedStatement insertQuery;
     PreparedStatement selectQuery;
+    private static HistoryDao SINGLETON;
 
-    public HistoryDao(Connection connection){
-        this.connection = connection;
+    private HistoryDao(){
+        this.connection = DatabaseConnection.getConnection();
         try{
             insertQuery = connection.prepareStatement("INSERT INTO audit-history VALUES (?,?,?)");
             selectQuery = connection.prepareStatement("SELECT * FROM audit-history");
         }catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static final HistoryDao getInstance(){
+        if(SINGLETON == null){
+            SINGLETON = new HistoryDao();
+        }
+        return SINGLETON;
     }
 
     public boolean insert(String username, String action, Time timestamp){

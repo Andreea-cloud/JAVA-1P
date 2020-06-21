@@ -20,9 +20,7 @@ public class RegisterController {
     private static final String EMAIL_REGEX      = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
 
     public RegisterController(RegisterPage view) {
-        Connection connection = DatabaseConnection.getConnection();
-//        FIXME send usersDao as parameter
-        usersDao = new UsersDao(connection);
+        usersDao = UsersDao.getInstance();
         viewRegisterPage = view;
     }
 
