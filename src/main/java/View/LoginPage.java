@@ -65,6 +65,7 @@ public class LoginPage extends JFrame {
         loginButton.addActionListener(e -> {
             LoginController loginController = new LoginController(this);
             if(true == loginController.validateLoginUser()) {
+                loginController.logAction();
                 MainPage main = new MainPage();
                 main.setVisible(true);
                 dispose();

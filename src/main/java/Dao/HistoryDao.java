@@ -19,8 +19,8 @@ public class HistoryDao {
     private HistoryDao(){
         this.connection = DatabaseConnection.getConnection();
         try{
-            insertQuery = connection.prepareStatement("INSERT INTO audit-history VALUES (?,?,?)");
-            selectQuery = connection.prepareStatement("SELECT * FROM audit-history");
+            insertQuery = connection.prepareStatement("INSERT INTO audit VALUES (null, ?,?,?)");
+            selectQuery = connection.prepareStatement("SELECT * FROM audit");
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -37,7 +37,9 @@ public class HistoryDao {
         try{
             insertQuery.setString(1, username);
             insertQuery.setString(2, action);
-            insertQuery.setTime(3, timestamp);
+            insertQuery.setTime(3,  timestamp);
+            insertQuery.executeUpdate();
+
         }catch (SQLException e) {
             e.printStackTrace();
         }

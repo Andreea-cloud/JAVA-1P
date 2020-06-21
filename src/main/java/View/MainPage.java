@@ -107,6 +107,7 @@ public class MainPage extends MenuBarBase {
         add(new JScrollPane(flightsTable), BorderLayout.CENTER);
     }
 
+    // TODO change to private
     public void showFlights(){
 
         flightsDao = FlightsDao.getInstance();
