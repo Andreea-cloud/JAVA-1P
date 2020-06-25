@@ -1,12 +1,8 @@
 package Controller;
 
-import Dao.HistoryDao;
 import Dao.UsersDao;
-import Database.DatabaseConnection;
 import Model.Users;
 import View.LoginPage;
-import java.sql.Connection;
-import java.util.Calendar;
 import java.util.List;
 
 public class LoginController {
@@ -15,17 +11,16 @@ public class LoginController {
 
     public LoginController (LoginPage view){
 //        FIXME send usersDao as parameter
-        usersDao = UsersDao.getInstance();
+        usersDao      = UsersDao.getInstance();
         viewLoginPage = view;
     }
 
     public boolean validateLoginUser(){
-
         String usernameOrEmail      = viewLoginPage.getUsernameField().getText();
         char[] input                = viewLoginPage.getPasswordField().getPassword();
         String passwd               = new String(input);
 
-        List<Users> users = usersDao.findAll();
+        List<Users> users           = usersDao.findAll();
 
         for (Users temp : users) {
             // matches username

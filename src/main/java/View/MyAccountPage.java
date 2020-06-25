@@ -16,8 +16,6 @@ public class MyAccountPage extends MenuBarBase {
     private JPanel buttonPanel, textPanel, changePanel;
     private JButton changeEmailButton, changeUsernameButton, changePasswordButton, historyButton;
     private JLabel newEmailLabel, usernameLabel, newUsernameLabel, textLabel;
-
-//    FIXME change naming to camelCase format
     private JTextField newEmailField, usernameField, newUsernameField,  emailField;
 
     MyAccountPage(){
@@ -108,7 +106,6 @@ public class MyAccountPage extends MenuBarBase {
                 MyAccountPage myAccountPage = new MyAccountPage();
                 myAccountPage.setVisible(true);
                 dispose();
-            }else{
             }
         });
 
@@ -119,7 +116,6 @@ public class MyAccountPage extends MenuBarBase {
                 MyAccountPage myAccountPage = new MyAccountPage();
                 myAccountPage.setVisible(true);
                 dispose();
-            }else{
             }
         });
 
@@ -145,4 +141,3 @@ public class MyAccountPage extends MenuBarBase {
         JOptionPane.showMessageDialog(null, msg, "SUCCES", JOptionPane.INFORMATION_MESSAGE);
     }
 }
-

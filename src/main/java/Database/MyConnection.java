@@ -9,7 +9,5 @@ public class MyConnection {
     public static void main(String[] args) throws SQLException {
         Connection connection = DatabaseConnection.getConnection();
         Statement statement = connection.createStatement();
-
-
     }
 }

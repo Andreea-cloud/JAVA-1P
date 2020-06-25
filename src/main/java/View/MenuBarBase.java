@@ -1,8 +1,8 @@
 package View;
 
 import Controller.HistoryController;
-
 import javax.swing.*;
+import java.util.Stack;
 
 public class MenuBarBase extends JFrame {
 
@@ -10,6 +10,8 @@ public class MenuBarBase extends JFrame {
     public JMenuItem homeItem, myAccountItem, logoutItem, historyItem, backItem;
     protected String authEmail;
     protected String authUsername;
+
+    static Stack<JPanel> backPanels;
 
     protected void setAuthUsername(String username) {
         this.authUsername = username;
@@ -24,19 +26,20 @@ public class MenuBarBase extends JFrame {
     }
 
     MenuBarBase(String username, String email) {
-        authEmail = email;
+        authEmail    = email;
         authUsername = username;
         initMenu();
     }
 
         public void initMenu(){
-
             menuBar       = new JMenuBar();
             homeItem      = new JMenuItem("Home");
             myAccountItem = new JMenuItem("My Account");
             logoutItem    = new JMenuItem("Log out");
             historyItem   = new JMenuItem("History");
             backItem      = new JMenuItem("Back");
+
+            backPanels = new Stack<JPanel>();
 
             homeItem.addActionListener(event ->{
                 MainPage mainPage = new MainPage();
@@ -56,15 +59,11 @@ public class MenuBarBase extends JFrame {
                 loginPage.setVisible(true);
                 dispose();
             });
-
             historyItem.addActionListener(event -> {
                 HistoryPage historyPage = new HistoryPage();
                 HistoryController.logAction("Navigate to history page!");
                 historyPage.setVisible(true);
                 dispose();
-            });
-
-            backItem.addActionListener(event -> {
             });
 
             menuBar.add(homeItem);

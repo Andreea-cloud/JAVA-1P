@@ -62,7 +62,6 @@ public class ChangePasswordPage extends MenuBarBase{
 
         changePanel.add(currentUserLabel);
         changePanel.add(currentUserField);
-
         changePanel.add(newPasswordLabel);
         changePanel.add(newPasswordField);
         changePanel.add(confirmNewPasswordLabel);
@@ -106,4 +105,3 @@ public class ChangePasswordPage extends MenuBarBase{
         JOptionPane.showMessageDialog(null, msg, "SUCCES", JOptionPane.INFORMATION_MESSAGE);
     }
 }
-

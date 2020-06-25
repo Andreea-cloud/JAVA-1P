@@ -1,12 +1,9 @@
 package Controller;
 
 import Dao.UsersDao;
-import Database.DatabaseConnection;
 import Model.Users;
 import View.ChangePasswordPage;
 import View.MyAccountPage;
-
-import java.sql.Connection;
 import java.util.List;
 
 public class AccountController {
@@ -20,7 +17,7 @@ public class AccountController {
     private static final String NUMBERS_REGEX    = "(.*[0-9].*)";
 
     public AccountController(MyAccountPage view) {
-        usersDao = UsersDao.getInstance();
+        usersDao          = UsersDao.getInstance();
         viewMyAccountPage = view;
     }
 
@@ -31,8 +28,8 @@ public class AccountController {
 
     public boolean validateChangeUser() {
         String currentUsername = viewMyAccountPage.getUsernameField().getText();
-        String newUsername = viewMyAccountPage.getNewUsernameField().getText();
-        List<Users> users = usersDao.findAll();
+        String newUsername     = viewMyAccountPage.getNewUsernameField().getText();
+        List<Users> users      = usersDao.findAll();
 
         if (!currentUsername.isEmpty()) {
             for (Users temp : users) {
@@ -52,15 +49,14 @@ public class AccountController {
         usersDao.updateUsername(newUsername, currentUsername );
         viewMyAccountPage.showMessageSuccess("Username changed successfully");
         Session.getInstance().setAuthUserName(newUsername);
-        // TODO check the result of update query
         return true;
     }
 
     public boolean validateChangeEmail() {
         String currentUsername = viewMyAccountPage.getUsernameField().getText();
-        String newEmail = viewMyAccountPage.getNewEmailField().getText();
+        String newEmail        = viewMyAccountPage.getNewEmailField().getText();
 
-        List<Users> users = usersDao.findAll();
+        List<Users> users      = usersDao.findAll();
 
         if (!currentUsername.isEmpty()) {
                 if (!newEmail.isEmpty()) {
@@ -73,7 +69,6 @@ public class AccountController {
                 }else{
                     viewMyAccountPage.showMessage("Email cannot be empty!");
                 }
-
         } else {
             viewMyAccountPage.showMessage("Current username cannot be empty!");
             viewMyAccountPage.getUsernameField().requestFocus();
@@ -82,17 +77,16 @@ public class AccountController {
         usersDao.updateEmail(newEmail, currentUsername);
         viewMyAccountPage.showMessageSuccess("Email changed successfully");
         Session.getInstance().setAuthEmail(newEmail);
-        // TODO check the result of update query
         return true;
     }
 
     public boolean validateChangePassword(){
-        String currentUser = viewChangePasswordPage.getCurrentUserField().getText();
-        char [] input = viewChangePasswordPage.getNewPasswordField().getPassword();
-        String newPassword = new String(input);
+        String currentUser        = viewChangePasswordPage.getCurrentUserField().getText();
+        char [] input             = viewChangePasswordPage.getNewPasswordField().getPassword();
+        String newPassword        = new String(input);
         String newPasswordConfirm = new String(viewChangePasswordPage.getConfirmNewPasswordField().getPassword());
 
-        List <Users> users = usersDao.findAll();
+        List <Users> users        = usersDao.findAll();
 
         if (!currentUser.isEmpty()) {
             if (newPassword.length() < 6 ||

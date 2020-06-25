@@ -1,13 +1,10 @@
 package Controller;
 
 import Dao.FlightsDao;
-import Database.DatabaseConnection;
 import Model.Flights;
 import View.AddFlightPage;
-
 import javax.swing.*;
 import java.awt.*;
-import java.sql.Connection;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +20,6 @@ public class FlightController {
     }
 
     public boolean validateFlight(){
-
         String departure = viewAddFlightPage.getDepartureField().getText();
         String arrive    = viewAddFlightPage.getArriveField().getText();
         int price        = 0;
@@ -43,14 +39,12 @@ public class FlightController {
             viewAddFlightPage.getDepartureField().requestFocus();
             return false;
         }
-
         if(arrive.length() < 3){
             viewAddFlightPage.showMessage("Destination Flight should be more 3 characters!");
             viewAddFlightPage.getDepartureField().setText("");
             viewAddFlightPage.getDepartureField().requestFocus();
             return false;
         }
-//FIXME use select in DB
         for(Flights temp : flights){
             if(temp.getSursa().equals(departure)){
                 if(temp.getDestinatie().equals(arrive)){
@@ -92,7 +86,6 @@ public class FlightController {
             viewAddFlightPage.getPriceField().requestFocus();
             return false;
         }
-
         // everything ok, insert flight
         flightsDao.insert(departure, arrive, departureTime, arrivalTime, flightDaysCommaSeparated , price);
        return true;

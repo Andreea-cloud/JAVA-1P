@@ -1,11 +1,9 @@
 package Dao;
 
 import Database.DatabaseConnection;
-import Model.Audit;
 import Model.Users;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,11 +28,11 @@ public class UsersDao {
     private UsersDao() {
         this.connection = DatabaseConnection.getConnection();
         try {
-            insertQuery = connection.prepareStatement("INSERT INTO utilizatori VALUES (null, ?,?,?)");
-            selectAllQuery = connection.prepareStatement("SELECT * FROM utilizatori");
-            selectUserQuery = connection.prepareStatement("SELECT * FROM utilizatori WHERE username = ?");
+            insertQuery         = connection.prepareStatement("INSERT INTO utilizatori VALUES (null, ?,?,?)");
+            selectAllQuery      = connection.prepareStatement("SELECT * FROM utilizatori");
+            selectUserQuery     = connection.prepareStatement("SELECT * FROM utilizatori WHERE username = ?");
             updateUsernameQuery = connection.prepareStatement("UPDATE utilizatori SET username = ? WHERE username = ?");
-            updateEmailQuery = connection.prepareStatement("UPDATE utilizatori SET email = ? WHERE username = ?");
+            updateEmailQuery    = connection.prepareStatement("UPDATE utilizatori SET email = ? WHERE username = ?");
             updatePasswordQuery = connection.prepareStatement("UPDATE utilizatori SET password = ? WHERE username = ?");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -99,19 +97,18 @@ public class UsersDao {
 
     public List<Users> findAll() {
         try {
-            ResultSet result = selectAllQuery.executeQuery();
+            ResultSet result  = selectAllQuery.executeQuery();
             List<Users> users = new ArrayList<>();
 
             while(result.next()) {
-                int id = result.getInt("id");
+                int id          = result.getInt("id");
                 String username = result.getString("username");
                 String password = result.getString("password");
-                String email = result.getString("email");
+                String email    = result.getString("email");
 
-                Users user = new Users(id, username, password, email);
+                Users user      = new Users(id, username, password, email);
                 users.add(user);
             }
-
             return users; // return the list
         } catch (SQLException e) {
             e.printStackTrace();
@@ -119,7 +116,3 @@ public class UsersDao {
         return Collections.emptyList();
     }
 }
-
-
-
-

@@ -4,7 +4,6 @@ import lombok.*;
 
 import java.time.LocalTime;
 
-
 @Getter
 @Setter
 @ToString
@@ -19,5 +18,4 @@ public class Flights {
     LocalTime oraSosire;
     String zile;
     int pret;
-
 }

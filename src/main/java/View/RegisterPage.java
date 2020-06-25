@@ -1,8 +1,6 @@
 package View;
 
 import Controller.RegisterController;
-import Controller.UserController;
-import Model.Audit;
 import lombok.Getter;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -14,7 +12,6 @@ public class RegisterPage extends JFrame {
     private JPanel panel;
     private JButton registerButton, cancelButton;
     private JLabel usernameLabel, passwordLabel, passwordConfirmationLabel, emailLabel;
-
     private JTextField usernameField, emailField;
     private JPasswordField passwordField, passwordConfirmationField;
 
@@ -40,10 +37,10 @@ public class RegisterPage extends JFrame {
         emailLabel.setFont(new Font("Time New Roman", Font.BOLD, 15));
         emailLabel.setBorder(border);
 
-        usernameField = new JTextField();
-        passwordField = new JPasswordField();
+        usernameField             = new JTextField();
+        passwordField             = new JPasswordField();
         passwordConfirmationField = new JPasswordField();
-        emailField = new JTextField();
+        emailField                = new JTextField();
 
         registerButton = new JButton("Register");
         registerButton.setFont(new Font("Time New Roman", Font.ITALIC, 20));
@@ -73,9 +70,6 @@ public class RegisterPage extends JFrame {
                 LoginPage login = new LoginPage();
                 login.setVisible(true);
                 dispose();
-
-            }
-            else {
             }
         });
 
@@ -90,4 +84,3 @@ public class RegisterPage extends JFrame {
         JOptionPane.showMessageDialog(null, msg, "ERROR", JOptionPane.ERROR_MESSAGE);
     }
 }
-

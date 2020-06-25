@@ -2,9 +2,6 @@ package Dao;
 
 import Database.DatabaseConnection;
 import Model.Flights;
-
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -16,6 +13,7 @@ public class FlightsDao {
     Connection connection;
     PreparedStatement insertQuery;
     PreparedStatement selectQuery;
+    PreparedStatement deleteQuery;
     private static FlightsDao SINGLETON;
 
     private FlightsDao() {
@@ -23,6 +21,7 @@ public class FlightsDao {
         try {
             insertQuery = connection.prepareStatement("INSERT INTO zboruri VALUES (null, ?,?,?,?,?,?)");
             selectQuery = connection.prepareStatement("SELECT * FROM zboruri");
+            deleteQuery = connection.prepareStatement("DELETE FROM zboruri WHERE ID = ?");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -43,7 +42,7 @@ public class FlightsDao {
             insertQuery.setTime(4, Time.valueOf(arrivalTime));
             insertQuery.setString(5, days);
             insertQuery.setInt(6, price);
-            int nameOfLinesModified = insertQuery.executeUpdate();
+            int nameOfLinesModified     = insertQuery.executeUpdate();
             return nameOfLinesModified != 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -51,29 +50,39 @@ public class FlightsDao {
         return false;
     }
 
+    public boolean delete(int ID) {
+        try {
+            deleteQuery.setInt(1, ID);
+            int nameOfLinesModified = deleteQuery.executeUpdate();
+            return nameOfLinesModified != 0;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public List<Flights> findAll() {
         try {
-            ResultSet result = selectQuery.executeQuery();
-            List<Flights> flights = new ArrayList<>();
+            ResultSet result            = selectQuery.executeQuery();
+            List<Flights> flights       = new ArrayList<>();
 
             while(result.next()) {
-                int id = result.getInt("ID");
-                String departure = result.getString("Sursa");
-                String destination = result.getString("Destinatie");
+                int id                  = result.getInt("ID");
+                String departure        = result.getString("Sursa");
+                String destination      = result.getString("Destinatie");
                 LocalTime departureTime = result.getTime("Ora Plecare").toLocalTime();
-                LocalTime arrivalTime = result.getTime("Ora Sosire").toLocalTime();
-                String days = result.getString("Zile");
-                int price = result.getInt("Pret");
+                LocalTime arrivalTime   = result.getTime("Ora Sosire").toLocalTime();
+                String days             = result.getString("Zile");
+                int price               = result.getInt("Pret");
 
-                Flights Flight = new Flights(id, departure, destination, departureTime, arrivalTime, days, price);
+                Flights Flight          = new Flights(id, departure, destination, departureTime, arrivalTime, days, price);
                 flights.add(Flight);
             }
-
             return flights; // return the list
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return Collections.emptyList();
     }
-
 }

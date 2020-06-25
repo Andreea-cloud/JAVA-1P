@@ -80,6 +80,7 @@ public class AddFlightPage extends JFrame {
         fridayBox = new JCheckBox("Friday");
         saturdayBox = new JCheckBox("Saturday");
         sundayBox = new JCheckBox("Sunday");
+
         daysPanel = new JPanel();
         daysPanel.add(mondayBox);
         daysPanel.add(tuesdayBox);
@@ -118,7 +119,6 @@ public class AddFlightPage extends JFrame {
         buttonPanel.add(cancelButton, BorderLayout.WEST);
         add(buttonPanel, BorderLayout.SOUTH);
 
-
         setVisible(true);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -142,6 +142,3 @@ public class AddFlightPage extends JFrame {
         JOptionPane.showMessageDialog(null, msg, "ERROR", JOptionPane.ERROR_MESSAGE);
     }
 }
-
-
-

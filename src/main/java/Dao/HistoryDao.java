@@ -3,7 +3,6 @@ package Dao;
 import Controller.Session;
 import Database.DatabaseConnection;
 import Model.Audit;
-import Model.Users;
 import lombok.Getter;
 import java.sql.*;
 import java.util.ArrayList;
@@ -40,7 +39,6 @@ public class HistoryDao {
             insertQuery.setString(2, action);
             insertQuery.setTimestamp(3,  timestamp);
             insertQuery.executeUpdate();
-
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -50,18 +48,17 @@ public class HistoryDao {
     public List<Audit> findAll(){
         try {
             selectQuery.setString(1, Session.getInstance().getAuthUserName());
-            ResultSet result = selectQuery.executeQuery();
-            List<Audit> audit = new ArrayList<>();
+            ResultSet result        = selectQuery.executeQuery();
+            List<Audit> audit       = new ArrayList<>();
 
             while(result.next()) {
-                String username = result.getString("username");
-                String action = result.getString("action");
+                String username     = result.getString("username");
+                String action       = result.getString("action");
                 Timestamp timestamp = result.getTimestamp("timestamp");
 
-                Audit history = new Audit(username, action, timestamp);
+                Audit history       = new Audit(username, action, timestamp);
                 audit.add(history);
             }
-
             return audit; // return the list
         } catch (SQLException e) {
             e.printStackTrace();

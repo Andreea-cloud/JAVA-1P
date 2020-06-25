@@ -2,7 +2,6 @@ package View;
 
 import Controller.HistoryController;
 import Dao.FlightsDao;
-import Database.DatabaseConnection;
 import Model.Flights;
 import lombok.Getter;
 import javax.swing.*;
@@ -11,17 +10,14 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 @Getter
 
-
 public class MainPage extends MenuBarBase {
 
     private FlightsDao flightsDao;
-
     private JPanel mainPanel, currentPanel;
     private JButton addButton;
     private JTable flightsTable;
@@ -95,7 +91,6 @@ public class MainPage extends MenuBarBase {
         mainPanel.add(addButton, BorderLayout.CENTER);
 
         add(mainPanel, BorderLayout.SOUTH);
-
         setVisible(true);
 
         addButton.addActionListener(e -> {
@@ -104,14 +99,11 @@ public class MainPage extends MenuBarBase {
             addFlight.setVisible(true);
             dispose();
         });
-
         // JScrollPane to have the table header
         add(new JScrollPane(flightsTable), BorderLayout.CENTER);
     }
 
-    // TODO change to private
-    public void showFlights(){
-
+    private void showFlights(){
         flightsDao = FlightsDao.getInstance();
         DefaultTableModel model  = new DefaultTableModel();
         model.addColumn("ID");

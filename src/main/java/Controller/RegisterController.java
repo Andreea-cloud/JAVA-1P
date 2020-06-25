@@ -1,10 +1,8 @@
 package Controller;
 
 import Dao.UsersDao;
-import Database.DatabaseConnection;
 import Model.Users;
 import View.RegisterPage;
-import java.sql.Connection;
 import java.util.List;
 
 public class RegisterController {
@@ -12,15 +10,13 @@ public class RegisterController {
     private UsersDao usersDao;
     private RegisterPage viewRegisterPage;
 
-    //define static REGEX constants
     private static final String UPPER_CASE_REGEX ="(.*[A-Z].*)";
     private static final String LOWER_CASE_REGEX ="(.*[a-z].*)";
     private static final String NUMBERS_REGEX    = "(.*[0-9].*)";
-    // FIXME REGEX
     private static final String EMAIL_REGEX      = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
 
     public RegisterController(RegisterPage view) {
-        usersDao = UsersDao.getInstance();
+        usersDao         = UsersDao.getInstance();
         viewRegisterPage = view;
     }
 
@@ -48,7 +44,6 @@ public class RegisterController {
                 viewRegisterPage.getUsernameField().requestFocus();
                 return false;
             }
-
             //validate password
             if (passwd.length() < 6 ||
                 !passwd.matches(UPPER_CASE_REGEX) ||
@@ -75,7 +70,6 @@ public class RegisterController {
                 viewRegisterPage.getEmailField().requestFocus();
                 return false;
             }
-
             // everything ok, insert user
             usersDao.insert(username, passwd, email);
             return true;

@@ -11,7 +11,6 @@ public class StartPage extends JFrame {
     private JLabel label;
     private JButton registerButton, loginButton;
 
-
     StartPage() {
         setTitle("Pagina de Start");
         setSize(350, 200);
@@ -62,4 +61,3 @@ public class StartPage extends JFrame {
         });
     }
 }
-

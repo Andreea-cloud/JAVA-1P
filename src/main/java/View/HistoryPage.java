@@ -1,9 +1,7 @@
 package View;
 
-import Dao.FlightsDao;
 import Dao.HistoryDao;
 import Model.Audit;
-import Model.Flights;
 import lombok.Getter;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -28,7 +26,6 @@ public class HistoryPage extends MenuBarBase {
         // JScrollPane to have the table header
         add(new JScrollPane(historyTable), BorderLayout.CENTER);
     }
-
 
     public void showHistory(){
 

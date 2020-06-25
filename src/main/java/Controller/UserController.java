@@ -2,11 +2,7 @@ package Controller;
 
 import Dao.HistoryDao;
 import Dao.UsersDao;
-import Database.DatabaseConnection;
-import Model.Audit;
 import View.HistoryPage;
-
-import java.sql.Connection;
 
 public class UserController {
 
@@ -15,9 +11,8 @@ public class UserController {
     private HistoryPage viewHistoryPage;
 
     public UserController(HistoryPage view){
-        usersDao = UsersDao.getInstance();
-        historyDao = HistoryDao.getInstance();
+        usersDao        = UsersDao.getInstance();
+        historyDao      = HistoryDao.getInstance();
         viewHistoryPage = view;
     }
-
 }
